@@ -6,30 +6,30 @@ import java.util.Queue;
 
 public class BlockingQueue<Type> {
 
-	private Queue<Type>   queue;
-	private int           maxSize;
-	private Lock          lock;
-	private Condition     condition;
+	private Queue<Type>      queue;
+	private int              maxSize;
+	private Lock             lock;
+	private Condition        condition;
 
 	public BlockingQueue(int maxSize) {
-		this.queue      = new LinkedList<Type>();
-		this.maxSize    = maxSize;
-		this.lock       = new ReentrantLock();
-		this.condition  = lock.newCondition();
+		this.queue     = new LinkedList<Type>();
+		this.maxSize   = maxSize;
+		this.lock      = new ReentrantLock();
+		this.condition = lock.newCondition();
 	}
 
 	public BlockingQueue(int maxSize, boolean fairness) {
-		this.queue      = new LinkedList<Type>();
-		this.maxSize    = maxSize;
-		this.lock       = new ReentrantLock(fairness);
-		this.condition  = this.lock.newCondition();
+		this.queue     = new LinkedList<Type>();
+		this.maxSize   = maxSize;
+		this.lock      = new ReentrantLock(fairness);
+		this.condition = this.lock.newCondition();
 	}
 
 	public BlockingQueue() {
-		this.queue      = new LinkedList<Type>();
-		this.maxSize    = 10;
-		this.lock       = new ReentrantLock();
-		this.condition  = this.lock.newCondition();
+		this.queue     = new LinkedList<Type>();
+		this.maxSize   = 10;
+		this.lock      = new ReentrantLock();
+		this.condition = this.lock.newCondition();
 	}
 
 	public void put(Type e) {
